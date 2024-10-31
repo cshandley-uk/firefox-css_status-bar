@@ -1,25 +1,29 @@
 :root:not([inFullscreen]) #a11y-announcement {
+	/*background-color: red !important;*/
 	/* Kludge to make "a11y-announcement" a replacement for the "browser-bottombox" element removed by FF 109 */
 	display: block !important;
 	background-color: var(--toolbar-bgcolor) !important;
 }
 #a11y-announcement,
 #browser-bottombox {
+	/*border-top: solid 1px red;*/
 	height: 20px;
 	border-top: solid 1px #505050;
 }
-#statuspanel {
+html /*hbox*/ #statuspanel {
+	/*background-color: red !important;*/
 	position: fixed !important;
 	height: 20px !important;
 	width: 100% !important;
-	left: 0px !important;
-	bottom: 0px !important;
+	left: 1px !important;
+	bottom: -20px !important;/*kludge, was 1px but had to change to -20px for some reason with FF 132*/
 	padding: 0px !important;
 	transition-duration: 0s !important;
 	transition-delay: 0s !important;
 	transition-property: none !important;
 }
-#statuspanel-label {
+html /*label*/ #statuspanel-label {
+	/*color: red !important;*/
 	color: var(--toolbar-color) !important;
 	background: transparent !important;
 	border: none !important;
@@ -31,15 +35,18 @@ html[inFullscreen="true"] #browser-bottombox {
 }
 
 /* Make status bar invisible when fullscreen */
+/*
 html[inFullscreen="true"] #statuspanel {
 	display:none !important;
 }
+*/
 /* Make status bar visible (as a pop-up box) when fullscreen */
-/*
+html[inFullscreen="true"] #statuspanel {
+	bottom: 1px !important;/*undo kludge*/
+}
 html[inFullscreen="true"] #statuspanel-label {
 	border: 1px solid #505050 !important;
 	padding-left: 2px !important;
 	padding-bottom: 6px !important;
 	background: var(--toolbar-bgcolor) !important;
 }
-*/
